@@ -10,6 +10,11 @@ const argv = yargs
     description: 'New file codes.json',
     type: 'boolean'
 })
+.option('delay', {
+    alias: 'd',
+    description: 'Delay in ms',
+    type: 'integer'
+})
 .help()
 .alias('help', 'h')
 .argv
@@ -59,6 +64,8 @@ let urls = [
 	'https://www.24000.ru/i1/x4/24000ru-otzyvy-o-sayte/'
 ]
 
+let delay = argv.delay || 1000
+
 async function main()
 {
 	while(true)
@@ -85,7 +92,7 @@ async function main()
 				console.log(codes)
 			}
 		}
-		await new Promise((done, fail) => setTimeout(() => done(), 1000))
+		await new Promise((done, fail) => setTimeout(() => done(), delay))
 	}
 }
 

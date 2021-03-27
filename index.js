@@ -14,6 +14,9 @@ const argv = yargs
 .alias('help', 'h')
 .argv
 
+if(!fs.existsSync('codes.json'))
+	fs.writeFileSync('codes.json', '{}')
+
 let codes = {}
 if(argv.new)
 {
